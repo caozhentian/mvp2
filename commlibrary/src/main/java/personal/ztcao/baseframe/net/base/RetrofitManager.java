@@ -90,11 +90,11 @@ public class RetrofitManager {
     public static Retrofit getInstance() {
         OkHttpClient.Builder okHttpBuilder = new OkHttpClient.Builder();
         //debug模式添加log信息拦截
-        if (BuildConfig.DEBUG) {
+        //if (BuildConfig.DEBUG) {
             HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
             interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
             okHttpBuilder.addInterceptor(interceptor);
-        }
+        //}
         okHttpBuilder.addNetworkInterceptor(new HeaderInterceptor(sRequestHeader));
         okHttpBuilder.addNetworkInterceptor(new ParamsInterceptor(sRequestParams));
         //okHttpBuilder.cache(getCache());

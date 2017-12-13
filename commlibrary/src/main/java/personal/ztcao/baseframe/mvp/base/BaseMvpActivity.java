@@ -75,7 +75,6 @@ public abstract class BaseMvpActivity<T extends BasePresenter> extends BaseActiv
             AppCompatDelegate.setDefaultNightMode(
                     AppCompatDelegate.MODE_NIGHT_NO);
         }
-        recreate();
     }
 
     protected abstract void initInject();

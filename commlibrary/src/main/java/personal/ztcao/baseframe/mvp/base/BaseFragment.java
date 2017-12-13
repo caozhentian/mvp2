@@ -73,10 +73,15 @@ public abstract class BaseFragment extends RxFragment {
     {
         mRootView = inflater.inflate(getLayout(), container, false);
         initData(getArguments());
+        return mRootView;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         initView();
         mIsViewPrepare = true;
         onLazyLoad();
-        return mRootView;
     }
 
     @Override

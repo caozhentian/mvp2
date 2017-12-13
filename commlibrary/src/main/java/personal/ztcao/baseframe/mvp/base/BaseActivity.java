@@ -26,7 +26,7 @@ import android.view.View;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
 import java.io.Serializable;
-import java8.util.Optional;
+
 
 import personal.ztcao.baseframe.mvp.base.app.App;
 
@@ -57,10 +57,10 @@ public abstract class BaseActivity extends RxAppCompatActivity {
         return  intent ;
     }
 
-    public static final <IntentParam extends Serializable>  Optional<IntentParam> getIntentParam(Intent intent){
-        IntentParam intentParam = (IntentParam) intent.getSerializableExtra(INTENT_PARAM_KEY);
-        return Optional.ofNullable(intentParam);
-    }
+//    public static final <IntentParam extends Serializable>  Optional<IntentParam> getIntentParam(Intent intent){
+//        IntentParam intentParam = (IntentParam) intent.getSerializableExtra(INTENT_PARAM_KEY);
+//        return Optional.ofNullable(intentParam);
+//    }
 
     protected Activity mContext;
 
