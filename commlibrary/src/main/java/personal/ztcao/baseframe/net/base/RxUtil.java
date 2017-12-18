@@ -76,7 +76,6 @@ public class RxUtil {
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .compose(RxUtil.<T>bindToLifecycle(provider, event));
-
             }
         };
     }
@@ -88,8 +87,7 @@ public class RxUtil {
                         .retryWhen(new RetryWithDelay())
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
-                        .compose(RxUtil.<T>bindToLifecycle(provider, event));
-
+                        .compose(RxUtil.<T>bindToLifecycle(provider, event)) ;
             }
         };
     }
