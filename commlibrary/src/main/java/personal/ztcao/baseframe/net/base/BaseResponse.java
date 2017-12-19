@@ -1,11 +1,14 @@
 package personal.ztcao.baseframe.net.base;
 
-
+import com.google.gson.annotations.SerializedName;
 
 public class BaseResponse<T> {
 
+    @SerializedName("code")
     private int code;
+    @SerializedName("message")
     private String msg;
+    @SerializedName("object")
     private T data;
 
     public int getCode() {
@@ -33,7 +36,7 @@ public class BaseResponse<T> {
     }
 
     public boolean isOk() {
-        return code == 0;
+        return code == 1;
     }
 
 }

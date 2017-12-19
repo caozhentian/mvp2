@@ -28,7 +28,6 @@ public abstract class BaseObserver<T> implements Observer<T> {
     @Override
     public void onSubscribe(Disposable d) {
         Toast.makeText(context, "建立连接", Toast.LENGTH_SHORT).show();
-
         //可以弹出Dialog 提示正在加载
         showDialog();
 

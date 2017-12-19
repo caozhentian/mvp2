@@ -9,10 +9,10 @@ import io.reactivex.functions.Function;
  * Created by Administrator on 2017/12/18.
  */
 
-public class ErrorTransformer<T> implements ObservableTransformer {
+public class ErrorTransformer<T> implements ObservableTransformer<BaseResponse<T> ,T> {
 
     @Override
-    public ObservableSource apply(Observable upstream) {
+    public ObservableSource<T> apply(Observable<BaseResponse<T>> upstream) {
         //onErrorResumeNext当发生错误的时候，由另外一个Observable来代替当前的Observable并继续发射数据
         return (Observable<T>) upstream.map(new HandleFuc<T>()).onErrorResumeNext(new HttpResponseFunc<T>());
     }
