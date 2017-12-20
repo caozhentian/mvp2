@@ -1,4 +1,4 @@
-package personal.ztcao.baseframe.net.base;
+package personal.ztcao.baseframe.net.base.observer;
 
 import android.content.Context;
 import android.util.Log;
@@ -6,10 +6,10 @@ import android.widget.Toast;
 
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
-
+import personal.ztcao.baseframe.net.base.ExceptionHandle;
 
 public abstract class BaseObserver<T> implements Observer<T> {
-    private Context context;
+    protected Context context;
     public BaseObserver(Context context) {
         this.context = context;
     }

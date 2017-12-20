@@ -179,4 +179,25 @@ public class RxUtil {
             }
         };
     }
+
+    public static <T> ObservableTransformer<T, T> applySchedulers() {
+        return new ObservableTransformer<T, T>() {
+            @Override public ObservableSource<T> apply(@NonNull Observable<T> upstream) {
+                return upstream
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .doOnSubscribe(new Consumer<Disposable>() {
+                            @Override
+                            public void accept(@NonNull final Disposable disposable) throws Exception {
+
+                            }
+                        })
+                        .doOnTerminate(new Action() {
+                            @Override public void run() throws Exception {
+
+                            }
+                        });
+            }
+        };
+    }
 }

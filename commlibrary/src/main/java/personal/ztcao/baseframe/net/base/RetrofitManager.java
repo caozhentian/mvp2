@@ -43,9 +43,9 @@ public class RetrofitManager {
     //服务的根URL地址 在Application中传入
     private static  String sBaseUrl = "" ;
 
-    private static ArrayMap<String, String> sRequestHeader ;
+    private static ArrayMap<String, String> sRequestHeader = new ArrayMap<>();
 
-    private static ArrayMap<String, String> sRequestParams ;
+    private static ArrayMap<String, String> sRequestParams = new ArrayMap<>();
     /**
      * 配置网络请求的url
      */
@@ -78,6 +78,7 @@ public class RetrofitManager {
      * 配置网络请求体
      */
     private static ArrayMap<String, String> getRequestParams() {
+        sRequestParams.put("ismi" ,"489548594584") ;
         return sRequestParams;
     }
 
@@ -91,12 +92,12 @@ public class RetrofitManager {
         OkHttpClient.Builder okHttpBuilder = new OkHttpClient.Builder();
         //debug模式添加log信息拦截
         //if (BuildConfig.DEBUG) {
-            HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
-            interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-            okHttpBuilder.addInterceptor(interceptor);
+        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        okHttpBuilder.addInterceptor(interceptor);
         //}
-        okHttpBuilder.addNetworkInterceptor(new HeaderInterceptor(sRequestHeader));
-        okHttpBuilder.addNetworkInterceptor(new ParamsInterceptor(sRequestParams));
+        okHttpBuilder.addInterceptor(new HeaderInterceptor(getRequestHeader()));
+        okHttpBuilder.addInterceptor(new ParamsInterceptor());
         //okHttpBuilder.cache(getCache());
         //设置连接超时
         okHttpBuilder.connectTimeout(TIMEOUT, TimeUnit.SECONDS);
