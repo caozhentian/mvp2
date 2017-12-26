@@ -15,8 +15,6 @@ class DemoFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var mRootView = inflater?.inflate(R.layout.frag_home , container , false) ;
-//        val message = mRootView?.findViewById<TextView>(R.id.message) ;
-//        message?.text = "hello2"
         return mRootView
     }
 
