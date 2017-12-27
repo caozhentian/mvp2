@@ -12,6 +12,9 @@ import persona.mvp.sample.demo.R
 import persona.mvp.sample.demo.bean.UserInstance
 import personal.ztcao.baseframe.mvp.base.BaseFragment
 import personal.ztcao.baseframe.mvp.base.toast.ToastUtil
+import com.zhouyou.http.callback.CallClazzProxy
+import com.zhouyou.http.EasyHttp
+import com.google.gson.reflect.TypeToken
 
 
 class HomeFragment : BaseFragment() {
@@ -26,42 +29,12 @@ class HomeFragment : BaseFragment() {
         UserInstance.userName = "13186075290"
         UserInstance.userPassword ="czt123456"
 
-//        UserInstance.login()
-//                .compose(RxUtil.applySchedulers())
-//                .compose(ErrorTransformer<UserRespDto>())
-//                .subscribe(object : BaseProgressObserver<UserRespDto>(context){
-//                    override fun onNext(t: UserRespDto) {
-//                        ToastUtil.showMsg(context , t.nickName22) ;
-//                    }
-//                })
         val mProgressDialog = IProgressDialog {
             val dialog = ProgressDialog(context)
             dialog.setMessage("登录中...")
             dialog
         }
-//        EasyHttp.post("m/user/login")
-//                .params("userName", UserInstance.userName)
-//                .params("password", UserInstance.userPassword)
-//                .sign(true)
-//                .timeStamp(true)
-//                .execute(object : ProgressDialogCallBack<ApiResult<UserRespDto>>(mProgressDialog, true, true) {
-//
-//                    override fun onError(e: ApiException) {
-//                        super.onError(e)
-//                        //showToast("登录失败！" + e.getMessage())
-//                    }
-//
-//                    override fun onSuccess(authModel: ApiResult<UserRespDto>) {
-//                        ToastUtil.showMsg(context , "登录成功")
-//                        //授权类信息存入缓存
-//                        //TokenManager.getInstance().setAuthModel(authModel)
-//                        //将用户和密码存入缓存
-//                        //LoginCache.getInstance().save(name, pass)
-//                        //Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-//                        //startActivity(intent);
-//                        //finish()
-//                    }
-//                })
+
         val loginRequestDto = LoginRequestDto(UserInstance.userName , UserInstance.userPassword) ;
         val observable = UserRepository.login(loginRequestDto) ;
         observable.subscribe(object : ProgressSubscriber<UserRespDto>(context, mProgressDialog) {
@@ -74,6 +47,8 @@ class HomeFragment : BaseFragment() {
                 ToastUtil.showMsg(context , result.toString())
             }
         })
+
+
     }
 
 }

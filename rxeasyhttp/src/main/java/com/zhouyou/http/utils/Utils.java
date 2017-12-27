@@ -28,6 +28,7 @@ import java.lang.reflect.GenericArrayType;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.lang.reflect.TypeVariable;
+import java.lang.reflect.WildcardType;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -174,7 +175,12 @@ public class Utils {
             return (Class) ((GenericArrayType) genericClass).getGenericComponentType();
         } else if (genericClass instanceof TypeVariable) { // 处理泛型擦拭对象     
             return getClass(((TypeVariable) genericClass).getBounds()[0], 0);
-        } else {
+        }
+        else if(genericClass instanceof WildcardType){
+            Type type = ((WildcardType) genericClass).getUpperBounds() [0];
+            return type.getClass() ;
+        }
+        else {
             return (Class) genericClass;
         }
     }
