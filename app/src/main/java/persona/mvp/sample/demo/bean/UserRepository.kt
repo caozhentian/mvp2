@@ -6,9 +6,7 @@ import com.zhouyou.http.EasyHttp
 import com.zhouyou.http.callback.CallClazzProxy
 import io.reactivex.Observable
 import persona.mvp.sample.demo.api.CustomApiResult
-import persona.mvp.sample.demo.bean.TaskEntity
-import persona.mvp.sample.demo.bean.TaskReqDto
-import persona.mvp.sample.demo.bean.UserInstance
+import persona.mvp.sample.demo.bean.*
 
 
 /**
@@ -48,4 +46,19 @@ object UserRepository : BaseRepository(){
         return observable ;
     }
 
+
+    fun queryRecord2():Observable<PageRespBase<Record>> {
+        val type = object : TypeToken<PageRespBase<Record>>() {}.type;
+        val observable = EasyHttp.post("m/customer/findCustomerNEStatusPage2")
+                .readTimeOut((30 * 1000).toLong())//局部定义读超时
+                .writeTimeOut((30 * 1000).toLong())
+                .params("nextPage", "0")
+                .params("pageSize", "10")
+                .params("sortData", """[{property:'a.create_Time',direction:'DESC'}]""")
+                .params("loginId",  "117")
+                .params("employeeId" ,"18")
+                .execute(object : CallClazzProxy<CustomApiResult<PageRespBase<Record>>,PageRespBase<Record>>(type) {
+                })
+        return observable ;
+    }
 }

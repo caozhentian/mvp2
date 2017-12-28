@@ -1,24 +1,21 @@
 package persona.mvp.sample.demo.app
 
-import android.app.Application
 import com.zhouyou.http.EasyHttp
 import com.zhouyou.http.cache.converter.SerializableDiskConverter
 import com.zhouyou.http.model.HttpHeaders
-import personal.ztcao.baseframe.mvp.base.app.App
-import personal.ztcao.baseframe.net.base.RetrofitManager
-import retrofit2.http.Url
-import com.zhouyou.http.model.HttpHeaders.getUserAgent
 import com.zhouyou.http.model.HttpParams
+import persona.mvp.sample.demo.net.interceptor.CustomSignInterceptor
+import persona.mvp.sample.demo.net.interceptor.TokenInterceptor
+import personal.ztcao.baseframe.mvp.base.app.App
 
 
 /**
  * Created by Administor on 2017/12/12 0012.
  */
 class ProjectApp : App() {
-
     override fun onCreate() {
         super.onCreate()
-        //RetrofitManager.setBaseUrl(SERVER_URL)
+        appContext = this ;
         initEasyHttp() ;
     }
 
@@ -48,8 +45,14 @@ class ProjectApp : App() {
                 //.addConverterFactory(GsonConverterFactory.create(gson))//本框架没有采用Retrofit的Gson转化，所以不用配置
                 .addCommonHeaders(headers)//设置全局公共头
                 .addCommonParams(params)//设置全局公共参数
-                //.addInterceptor(CustomSignInterceptor())//添加参数签名拦截器
-        //.addInterceptor(new HeTInterceptor());//处理自己业务的拦截器
+                .addInterceptor(CustomSignInterceptor())//添加参数签名拦截器
+                .addInterceptor(TokenInterceptor())
+                //.addInterceptor(new HeTInterceptor());//处理自己业务的拦截器
+
+    }
+
+    companion object {
+        lateinit var appContext : ProjectApp ;
 
     }
 }
