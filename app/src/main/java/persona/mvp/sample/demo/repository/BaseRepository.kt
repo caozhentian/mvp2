@@ -3,7 +3,7 @@ package com.example.repository
 import com.zhouyou.http.EasyHttp
 import com.zhouyou.http.callback.CallClazzProxy
 import io.reactivex.Observable
-import persona.mvp.sample.demo.api.CustomApiResult
+import persona.mvp.sample.demo.net.api.CustomApiResult
 import persona.mvp.sample.demo.bean.PageRespBase
 import java.lang.reflect.Type
 

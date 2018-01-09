@@ -12,7 +12,7 @@
 **------------------------------------------------------------------------------
 ********************************End of Head************************************\
 */
-package personal.ztcao.baseframe.mvp.base;
+package personal.ztcao.baseframe.mvp.base.view;
 
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
@@ -22,6 +22,8 @@ import android.view.View;
 import com.lufficc.stateLayout.StateLayout;
 
 import personal.ztcao.baseframe.mvp.R;
+import personal.ztcao.baseframe.mvp.base.BaseMvpStateMvpView;
+import personal.ztcao.baseframe.mvp.base.presenter.BasePresenter;
 
 /**
  * 工程名:mvp
@@ -32,25 +34,13 @@ import personal.ztcao.baseframe.mvp.R;
  * 修改时间：
  * 修改备注：
  */
-public abstract class BaseMvpFragment<T extends BasePresenter> extends BaseFragment implements BaseStateView {
+public abstract class BaseMvpMvpStateFragment<T extends BasePresenter> extends BaseFragment implements BaseMvpStateMvpView {
 
     //@Inject
     protected T mPresenter;
 
     //子类中布局中必须包括state_layout布局 约定
     protected StateLayout mStateLayout ;
-
-//    protected FragmentComponent getFragmentComponent(){
-//        return DaggerFragmentComponent.builder()
-//                .appComponent(App.getAppComponent())
-//                .fragmentModule(getFragmentModule())
-//                .build();
-//    }
-//
-//    protected FragmentModule getFragmentModule(){
-//        return new FragmentModule(this);
-//    }
-
 
     @Override
     protected @LayoutRes  int getLayout() {
@@ -77,15 +67,6 @@ public abstract class BaseMvpFragment<T extends BasePresenter> extends BaseFragm
         super.onDestroyView();
     }
 
-    @Override
-    public void showErrorMsg(String msg) {
-        //SnackbarUtil.show(((ViewGroup) getActivity().findViewById(android.R.id.content)).getChildAt(0), msg);
-    }
-
-    @Override
-    public void useNightMode(boolean isNight) {
-
-    }
 
     @Override
     public void stateError() {

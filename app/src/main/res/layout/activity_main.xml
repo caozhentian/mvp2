@@ -7,14 +7,11 @@
     android:layout_height="match_parent"
     tools:context="persona.mvp.sample.demo.view.main.MainActivity">
 
-    <FrameLayout
-        android:id="@+id/fragmentContainer"
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </FrameLayout>
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toTopOf="@id/navigation"/>
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"
         android:layout_width="0dp"

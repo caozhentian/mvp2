@@ -1,5 +1,6 @@
 package persona.mvp.sample.demo.app
 
+import com.blankj.utilcode.util.Utils
 import com.zhouyou.http.EasyHttp
 import com.zhouyou.http.cache.converter.SerializableDiskConverter
 import com.zhouyou.http.model.HttpHeaders
@@ -17,6 +18,7 @@ class ProjectApp : App() {
         super.onCreate()
         appContext = this ;
         initEasyHttp() ;
+        Utils.init(this);
     }
 
     fun initEasyHttp(){

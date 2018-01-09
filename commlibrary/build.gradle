@@ -2,14 +2,13 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 26
+    compileSdkVersion rootProject.ext.compileSdkVersion
 
     defaultConfig {
-        minSdkVersion 19
-        targetSdkVersion 26
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
     }
@@ -26,34 +25,30 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.lufficc:stateLayout:0.1.1'
-    compile 'com.squareup.okhttp3:logging-interceptor:3.9.0'
-    compile 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
-    compile 'io.reactivex.rxjava2:rxjava:2.1.6'
-    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
-    compile 'com.squareup.retrofit2:retrofit:2.3.0'
-    compile 'com.squareup.okio:okio:1.13.0'
-    compile 'com.squareup.okhttp3:okhttp:3.9.0'
-    compile 'com.squareup.retrofit2:converter-gson:2.3.0'
-    compile 'com.google.code.gson:gson:2.8.2'
-    compile 'com.orhanobut:logger:2.1.1'
+    compile "com.squareup.okhttp3:logging-interceptor:$okhttp3LoggingInterceptorVersion"
+    compile "com.squareup.retrofit2:adapter-rxjava2:$retrofit2_adapter_rxjava2"
+    compile "io.reactivex.rxjava2:rxjava:$rxjava2_version"
+    compile "io.reactivex.rxjava2:rxandroid:$rxandroid_version"
+    compile "com.squareup.retrofit2:retrofit:$retrofit2_version"
+    compile "com.squareup.okio:okio:$okio_version"
+    compile "com.squareup.okhttp3:okhttp:$okhttp3_version"
+    compile "com.squareup.retrofit2:converter-gson:$retrofit2_converter_gson_version"
+    compile "com.google.code.gson:gson:$gson_version"
+    compile "com.orhanobut:logger:$orhanobut_logger_version"
 
-    // If you want to bind to Android-specific lifecycles
-    compile 'com.trello.rxlifecycle2:rxlifecycle:2.2.1'
-
-// If you want to bind to Android-specific lifecycles
-    compile 'com.trello.rxlifecycle2:rxlifecycle-android:2.2.1'
-    // If you want pre-written Activities and Fragments you can subclass as providers
-    compile 'com.trello.rxlifecycle2:rxlifecycle-components:2.2.1'
-
-    compile "com.android.support:appcompat-v7:26.1.0"
+    compile "com.android.support:appcompat-v7:$support_version"
+    compile "com.android.support:design:$support_version"
+    compile "com.android.support.constraint:constraint-layout:$constraintLayoutVersion"
+    compile "com.android.support:recyclerview-v7:$support_version"
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-    implementation 'com.android.support:recyclerview-v7:26.1.0'
     compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.3'
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     compile 'com.github.autume:CircleProgressDialog:1.0.2'
+    compile 'com.blankj:utilcode:1.9.3'
+    compile 'com.readystatesoftware.systembartint:systembartint:1.0.3'
 }
 repositories {
     mavenCentral()

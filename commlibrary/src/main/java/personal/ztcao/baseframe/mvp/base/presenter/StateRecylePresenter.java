@@ -1,16 +1,16 @@
-package personal.ztcao.baseframe.mvp.base;
+package personal.ztcao.baseframe.mvp.base.presenter;
 
 
+import personal.ztcao.baseframe.mvp.base.BaseMvpStatePageView;
 import personal.ztcao.baseframe.mvp.base.bean.PageInfo;
 
 /**
  * Created by ztcao
  */
 
-abstract public class StateRecylePresenter<T extends BaseStatePageView, P extends PageInfo>
+abstract public class StateRecylePresenter<T extends BaseMvpStatePageView, P extends PageInfo>
         implements BaseStatePagePresenter<T , P> {
 
-    private T  view;
 
     private PageInfo mPageInfo = new PageInfo();
 

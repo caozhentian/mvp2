@@ -12,7 +12,7 @@
 **------------------------------------------------------------------------------
 ********************************End of Head************************************\
 */
-package personal.ztcao.baseframe.mvp.base;
+package personal.ztcao.baseframe.mvp.base.view;
 
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
@@ -28,6 +28,8 @@ import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import java.util.List;
 
 import personal.ztcao.baseframe.mvp.R;
+import personal.ztcao.baseframe.mvp.base.BaseMvpStatePageView;
+import personal.ztcao.baseframe.mvp.base.presenter.BasePresenter;
 
 /**
  * 工程名:mvp
@@ -38,7 +40,7 @@ import personal.ztcao.baseframe.mvp.R;
  * 修改时间：
  * 修改备注：
  */
-public abstract class BaseMvpSingleRecylerFragment<T extends BasePresenter, Item> extends BaseFragment implements BaseStatePageView<Item> {
+public abstract class BaseMvpSingleRecylerFragment<T extends BasePresenter, Item> extends BaseFragment implements BaseMvpStatePageView<Item> {
 
     //@Inject
     protected T mPresenter;
@@ -89,16 +91,6 @@ public abstract class BaseMvpSingleRecylerFragment<T extends BasePresenter, Item
             mPresenter.detachView();
         }
         super.onDestroyView();
-    }
-
-    @Override
-    public void showErrorMsg(String msg) {
-        //SnackbarUtil.show(((ViewGroup) getActivity().findViewById(android.R.id.content)).getChildAt(0), msg);
-    }
-
-    @Override
-    public void useNightMode(boolean isNight) {
-
     }
 
     @Override

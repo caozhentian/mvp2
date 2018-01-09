@@ -12,7 +12,9 @@
 **------------------------------------------------------------------------------
 ********************************End of Head************************************\
 */
-package personal.ztcao.baseframe.mvp.base;
+package personal.ztcao.baseframe.mvp.base.view;
+
+import personal.ztcao.baseframe.mvp.base.presenter.BasePresenter;
 
 /**
  * 工程名:mvp
@@ -23,10 +25,9 @@ package personal.ztcao.baseframe.mvp.base;
  * 修改时间：
  * 修改备注：
  */
-public interface BaseView {
+public interface BaseMvpView {
 
-    void showErrorMsg(String msg);
+    void showMsg(String msg);
 
-    void useNightMode(boolean isNight);
 
 }

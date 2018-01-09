@@ -20,10 +20,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
-import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
+
 
 import java.io.Serializable;
 
@@ -40,7 +41,7 @@ import personal.ztcao.baseframe.mvp.base.app.App;
  * 修改备注：
  */
 
-public abstract class BaseActivity extends RxAppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity {
 
     public static  final String INTENT_PARAM_KEY = "INTENT_PARAM_KEY" ;
 
@@ -57,16 +58,12 @@ public abstract class BaseActivity extends RxAppCompatActivity {
         return  intent ;
     }
 
-//    public static final <IntentParam extends Serializable>  Optional<IntentParam> getIntentParam(Intent intent){
-//        IntentParam intentParam = (IntentParam) intent.getSerializableExtra(INTENT_PARAM_KEY);
-//        return Optional.ofNullable(intentParam);
-//    }
-
     protected Activity mContext;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        preAddContentView() ;
         setContentView(getLayout());
         mContext = this;
         onViewCreated();
@@ -156,5 +153,9 @@ public abstract class BaseActivity extends RxAppCompatActivity {
      */
     protected void closeActivity() {
         finish();
+    }
+
+    protected void preAddContentView(){
+
     }
 }

@@ -1,11 +1,10 @@
 package com.example.repository
 
-import com.example.repository.BaseRepository
 import com.google.gson.reflect.TypeToken
 import com.zhouyou.http.EasyHttp
 import com.zhouyou.http.callback.CallClazzProxy
 import io.reactivex.Observable
-import persona.mvp.sample.demo.api.CustomApiResult
+import persona.mvp.sample.demo.net.api.CustomApiResult
 import persona.mvp.sample.demo.bean.*
 
 

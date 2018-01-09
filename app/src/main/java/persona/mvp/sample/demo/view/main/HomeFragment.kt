@@ -8,12 +8,11 @@ import com.zhouyou.http.exception.ApiException
 import com.zhouyou.http.subsciber.IProgressDialog
 import com.zhouyou.http.subsciber.ProgressSubscriber
 import io.reactivex.Observable
-import kotlinx.android.synthetic.main.frag_home.*
 import persona.mvp.sample.demo.R
 import persona.mvp.sample.demo.bean.PageRespBase
 import persona.mvp.sample.demo.bean.Record
 import persona.mvp.sample.demo.bean.UserInstance
-import personal.ztcao.baseframe.mvp.base.BaseFragment
+import personal.ztcao.baseframe.mvp.base.view.BaseFragment
 import personal.ztcao.baseframe.mvp.base.toast.ToastUtil
 
 
@@ -25,7 +24,7 @@ class HomeFragment : BaseFragment() {
 
     override fun initView() {
         super.initView()
-        message.text = "hello kotlin"
+        //message.text = "hello kotlin"
         UserInstance.userName = "13186075290"
         UserInstance.userPassword ="czt123456"
 

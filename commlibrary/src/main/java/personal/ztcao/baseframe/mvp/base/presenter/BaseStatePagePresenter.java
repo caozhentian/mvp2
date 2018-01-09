@@ -12,8 +12,9 @@
 **------------------------------------------------------------------------------
 ********************************End of Head************************************\
 */
-package personal.ztcao.baseframe.mvp.base;
+package personal.ztcao.baseframe.mvp.base.presenter;
 
+import personal.ztcao.baseframe.mvp.base.view.BaseMvpView;
 import personal.ztcao.baseframe.mvp.base.bean.PageInfo;
 
 /**
@@ -26,7 +27,7 @@ import personal.ztcao.baseframe.mvp.base.bean.PageInfo;
  * 修改备注：
  */
 
-public interface BaseStatePagePresenter<T extends BaseView, P extends PageInfo> extends BasePresenter<T>{
+public interface BaseStatePagePresenter<T extends BaseMvpView, P extends PageInfo> extends BasePresenter<T> {
 
     void loadData( )      ;
 

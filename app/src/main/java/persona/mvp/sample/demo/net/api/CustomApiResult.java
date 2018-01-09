@@ -1,4 +1,4 @@
-package persona.mvp.sample.demo.api;
+package persona.mvp.sample.demo.net.api;
 
 import com.zhouyou.http.model.ApiResult;
 

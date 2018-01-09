@@ -12,7 +12,7 @@
 **------------------------------------------------------------------------------
 ********************************End of Head************************************\
 */
-package personal.ztcao.baseframe.mvp.base;
+package personal.ztcao.baseframe.mvp.base.view;
 
 import android.content.Context;
 import android.content.Intent;
@@ -25,8 +25,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.trello.rxlifecycle2.components.support.RxFragment;
-
 /**
  * 工程名:mvp
  * 文 件 名: BaseFragment
@@ -36,7 +34,7 @@ import com.trello.rxlifecycle2.components.support.RxFragment;
  * 修改时间：
  * 修改备注：
  */
-public abstract class BaseFragment extends RxFragment {
+public abstract class BaseFragment extends Fragment  implements BaseMvpView {
 
     /**
      * attach 的activity
@@ -48,10 +46,7 @@ public abstract class BaseFragment extends RxFragment {
      *根 View
      */
     protected View mRootView ;
-    /**
-     * 是否对用户可见
-     */
-    protected boolean mIsVisible;
+
     /**
      * 是否加载完成
      * 当执行完onCreatView,View的初始化方法后方法后即为true
@@ -81,12 +76,15 @@ public abstract class BaseFragment extends RxFragment {
         super.onViewCreated(view, savedInstanceState);
         initView();
         mIsViewPrepare = true;
-        onLazyLoad();
     }
 
+
     @Override
-    public void onDestroyView() {
-        super.onDestroyView()  ;
+    public void onResume() {
+        super.onResume();
+        if(getUserVisibleHint()){// 避免View Paper ,首次加载的，每个Fragment 调用onResume，多次请求网络
+            onLazyLoad();
+        }
     }
 
     /**
@@ -116,21 +114,27 @@ public abstract class BaseFragment extends RxFragment {
     public void setUserVisibleHint(boolean isVisibleToUser)
     {
         super.setUserVisibleHint(isVisibleToUser);
-
-        this.mIsVisible = isVisibleToUser;
-
         if (isVisibleToUser)
         {
-            onVisibleToUser();
+            onVisibleToUser()  ;
+        }
+        else{
+            onInVisibleToUser() ;
         }
     }
 
     /**
      * 用户可见时执行的操作
      */
+    protected void onInVisibleToUser()
+    {
+    }
+    /**
+     * 用户可见时执行的操作
+     */
     protected void onVisibleToUser()
     {
-        if (mIsViewPrepare && mIsVisible)
+        if (mIsViewPrepare) //避免View还没有初始化，请求网络导致的错误
         {
             onLazyLoad();
         }
@@ -174,4 +178,7 @@ public abstract class BaseFragment extends RxFragment {
         }
     }
 
+    public void showMsg(String msg){
+
+    }
 }

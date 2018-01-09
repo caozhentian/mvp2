@@ -14,32 +14,27 @@
 */
 package personal.ztcao.baseframe.mvp.base;
 
-import android.support.annotation.LayoutRes;
-
-import personal.ztcao.baseframe.mvp.R;
+import java.util.List;
 
 /**
  * 工程名:mvp
  * 文 件 名: BaseView
  * 创 建 人: 曹振田
- * 描述:实现状态功能的MVP的基类Activity， 同时只包含一个Fragment
- * 创建日期: 2017/11/12 0012 19:33
+ * 描述:MVP模式中View的基类
+ * 创建日期: 2017/11/12 0012 19:23
  * 修改时间：
  * 修改备注：
  */
-public class BaseMvpSingleFragmentActivity<T extends BasePresenter>  extends BaseMvpActivity<T>{
+public interface BaseMvpStatePageView<Item> extends BaseMvpStateMvpView {
 
-    @Override
-    protected @LayoutRes  int getLayout() {
-        return R.layout.act_base_state_mvp_single_fragment;
-    }
+    void renderData(List<Item> dataList)    ;
 
-    @Override
-    protected void initInject() {
+    void renderMoreData(List<Item> dataList) ;
 
-    }
+    void noMoreData()     ;
 
-    protected  void initEventAndData(){
+    void finishLoadMore() ;
 
-    }
+    void finishRefresh()  ;
+
 }

@@ -14,19 +14,26 @@
 */
 package personal.ztcao.baseframe.mvp.base;
 
+import personal.ztcao.baseframe.mvp.base.view.BaseMvpView;
+
 /**
  * 工程名:mvp
- * 文 件 名: BasePresenter
+ * 文 件 名: BaseView
  * 创 建 人: 曹振田
- * 描述:MVP模式中Presenter基类
- * 创建日期: 2017/11/12 0012 19:28
+ * 描述:MVP模式中View的基类
+ * 创建日期: 2017/11/12 0012 19:23
  * 修改时间：
  * 修改备注：
  */
+public interface BaseMvpStateMvpView extends BaseMvpView {
 
-public interface BasePresenter<T extends BaseView>{
+    //=======  State对应的不同的View视图  =======
+    void stateError();
 
-    void attachView(T view);
+    void stateEmpty();
 
-    void detachView();
+    void stateLoading();
+
+    void stateMain();
+
 }
