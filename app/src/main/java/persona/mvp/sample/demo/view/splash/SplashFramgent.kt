@@ -14,7 +14,7 @@ import personal.ztcao.baseframe.mvp.base.view.BaseFragment
 class SplashFramgent:BaseFragment(),SplashContracts.SplashView {
 
     override fun renderPic() {
-        iv_splash.setImageDrawable(resources.getDrawable(R.mipmap.ic_launcher_round))
+        iv_splash.setImageDrawable(resources.getDrawable(R.mipmap.ic_splash))
     }
 
     override fun getLayout(): Int {

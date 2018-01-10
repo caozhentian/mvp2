@@ -25,10 +25,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 
+import com.jaeger.library.StatusBarUtil;
 
 import java.io.Serializable;
 
 
+import personal.ztcao.baseframe.mvp.R;
 import personal.ztcao.baseframe.mvp.base.app.App;
 
 /**
@@ -65,10 +67,17 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         preAddContentView() ;
         setContentView(getLayout());
+        if(!isFullScreen()) {
+            setStatusBar() ;
+        }
         mContext = this;
         onViewCreated();
         App.getInstance().addActivity(this);
         initEventAndData();
+    }
+
+    protected  boolean isFullScreen(){
+        return false ;
     }
 
     protected void setToolBar(Toolbar toolbar, String title) {
@@ -157,5 +166,9 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected void preAddContentView(){
 
+    }
+
+    protected void setStatusBar() {
+        StatusBarUtil.setColor(this, getResources().getColor(R.color.colorPrimary));
     }
 }
